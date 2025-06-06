@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mariangel Correa Orellana - PhD Candidate</title>
+  <meta name="description" content="Personal research website">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --main-pink: #ff69b4;
+      --deep-pink: #d72660;
+      --deeper-pink: #c2185b;
+      --light-pink: #ffe4ec;
+      --accent-pink: #ffb6d5;
+      --text-color: #333;
+      --header-bg: #fff0f6;
+      --window-shadow: 0 4px 24px 0 rgba(255,105,180,0.16);
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--light-pink);
+      color: var(--text-color);
+    }
+    header {
+      background: var(--header-bg);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-bottom: 3px solid var(--main-pink);
+    }
+    header h1 {
+      margin: 0 0 0.25em;
+      color: var(--main-pink);
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      color: var(--accent-pink);
+      font-size: 1.3rem;
+      margin: 0;
+    }
+    nav {
+      margin: 1.5rem 0 0;
+      text-align: center;
+    }
+    nav a {
+      color: var(--main-pink);
+      background: #fff;
+      padding: 0.5em 1em;
+      margin: 0 0.5em;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+      border: 2px solid var(--accent-pink);
+    }
+    nav a:hover {
+      background: var(--main-pink);
+      color: #fff;
+    }
+    main {
+      max-width: 1080px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    .window-section {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--window-shadow);
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin-bottom: 0;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      width: auto;
+      min-width: 0;
+      max-width: 95vw;
+      box-sizing: border-box;
+    }
+    .window-section:not(:last-child) {
+      margin-bottom: 0;
+    }
+    .window-titlebar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2em;
+      height: 32px;
+    }
+    .window-buttons {
+      display: flex;
+      gap: 0.5em;
+      margin-right: 0.8em;
+    }
+    .window-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .window-btn.red { background: #ff5f56; border: 1px solid #e0443e;}
+    .window-btn.yellow { background: #ffbd2e; border: 1px solid #dea123;}
+    .window-btn.green { background: #27c93f; border: 1px solid #13a10e;}
+    .window-title {
+      font-size: 1.15em;
+      font-weight: bold;
+      color: var(--main-pink);
+      letter-spacing: 0.5px;
+      flex: 1;
+      white-space: nowrap;
+    }
+    h3 {
+      margin-top: 0.5em;
+      color: var(--main-pink);
+    }
+    .project {
+      margin-bottom: 1.2em;
+      padding-bottom: 0.7em;
+      border-bottom: 1px solid var(--light-pink);
+    }
+    .project:last-child {
+      border-bottom: none;
+    }
+    .highlight-title {
+      color: var(--deep-pink);
+    }
+    .highlight-desc {
+      color: var(--deeper-pink);
+    }
+    .project-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 0.7em;
+      margin-bottom: 0.2em;
+    }
+    .project-images img {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--accent-pink);
+      background: #fff;
+      box-shadow: 0 2px 8px 0 rgba(255,105,180,0.08);
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    a {
+      color: var(--main-pink);
+    }
+    .news-list {
+      margin-top: 0.5em;
+      padding-left: 0;
+      width: 100%;
+    }
+    .news-item {
+      margin-bottom: 0.8em;
+      padding: 0.6em 0.8em;
+      border-left: 4px solid var(--main-pink);
+      background: var(--light-pink);
+      border-radius: 10px;
+      font-size: 0.98em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    .news-date {
+      font-size: 0.93em;
+      color: var(--accent-pink);
+      margin-bottom: 0.2em;
+      display: block;
+    }
+    .news-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8em;
+      margin-top: 0.3em;
+    }
+    .news-images img {
+      width: 90px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid var(--accent-pink);
+      background: #fff;
+      box-shadow: 0 2px 8px 0 rgba(255,105,180,0.08);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0 2rem;
+      color: var(--accent-pink);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 1000px) {
+      main {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .window-section {
+        max-width: 98vw;
+        width: auto;
+      }
+      .news-images img {
+        width: 70px;
+        height: 55px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mariangel Correa Orellana</h1>
+    <p>Personal Website</p>
+    <nav>
+      <a href="#about-window">About Me</a>
+      <a href="#projects-window">Research Projects</a>
+      <a href="#leadership-window">Leadership, Outreach and Mentoring</a>
+      <a href="#news-window">News</a>
+    </nav>
+  </header>
+  <main>
+    <!-- About Me Window -->
+    <section class="window-section" id="about-window">
+      <div class="window-titlebar">
+        <div class="window-buttons">
+          <span class="window-btn red"></span>
+          <span class="window-btn yellow"></span>
+          <span class="window-btn green"></span>
+        </div>
+        <span class="window-title">About Me</span>
+      </div>
+      <div>
+        <p>
+          Hi! I'm <b>Mariangel</b>, a PhD Candidate in Ecology, Evolution and Behavior at the University of Texas at Austin. My main interests include Computational Biology, Microbial Ecology, and Host-Microbe Interactions. Feel free to explore my current projects and outreach activities!
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Window -->
+    <section class="window-section" id="projects-window">
+      <div class="window-titlebar">
+        <div class="window-buttons">
+          <span class="window-btn red"></span>
+          <span class="window-btn yellow"></span>
+          <span class="window-btn green"></span>
+        </div>
+        <span class="window-title">Research Projects</span>
+      </div>
+      <div>
+        <div class="project">
+          <h3>Characterize the functional diversity of microbial communities within the Hawaiian anchialine ecosystem</h3>
+          <p>
+            My first dissertation chapter investigates the functional biodiversity of microbial communities in Hawaiian anchialine habitats—unique land-locked pools connected to the ocean through underground fissures. Using a combination of fieldwork, laboratory experiments, and bioinformatic tools, I aim to uncover the ecological roles and interactions of key microbial taxa in these understudied ecosystems.
+          </p>
+        </div>
+        <div class="project">
+          <h3>Environment and coevolution as drivers of the gut microbiome of <i>Halocaridina rubra</i></h3>
+          <p>
+            I will investigate how environment and coevolution shape the gut microbiome of <i>Halocaridina rubra</i>, the most abundant endemic crustacean in Hawaiian anchialine pools. Using field sampling, laboratory work, and bioinformatic analysis, I aim to determine how host phylogeny, diet, and geography influence the structure and composition of H. rubra’s gut microbiome.
+          </p>
+        </div>
+        <div class="project">
+          <h3>UT Turtle Pond Project</h3>
+          <p>
+            For this project, I studied the microbial communities of red-eared sliders across various locations in Austin using 16S rRNA analysis. I also served as a graduate student leader, mentoring undergraduate students in field sampling and microbial data analysis.
+          </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Leadership, Outreach and Mentoring Window -->
+    <section class="window-section" id="leadership-window">
+      <div class="window-titlebar">
+        <div class="window-buttons">
+          <span class="window-btn red"></span>
+          <span class="window-btn yellow"></span>
+          <span class="window-btn green"></span>
+        </div>
+        <span class="window-title">Leadership, Outreach and Mentoring</span>
+      </div>
+      <div>
+        <ul>
+          <li>
+           <b>Hot Science – Cool Talks! Volunteer:</b> I volunteered at the <i>“This is Your Brain on Birth Control”</i> event, where I created and led an interactive birth control matching game to engage attendees and promote science communication.
+          </li>
+          <li>
+            <b>EEBuddies Mentorship Opportunity:</b> I’m currently serving as a graduate student mentor to an undergraduate student, providing guidance on applying to graduate school and exploring research opportunities.
+           </li>
+          <li>
+            <b>SACNAS Chapter Vice President 2024-2025:</b> As Vice President of our university’s SACNAS chapter, I help lead initiatives that support underrepresented students in STEM through community building, professional development, and outreach events.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- News Window -->
+    <section class="window-section" id="news-window">
+      <div class="window-titlebar">
+        <div class="window-buttons">
+          <span class="window-btn red"></span>
+          <span class="window-btn yellow"></span>
+          <span class="window-btn green"></span>
+        </div>
+        <span class="window-title">News</span>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <span class="news-date">2025-05-28</span>
+          My first first-author publication was accepted in <i>Journal of Thermal Biology</i>! You can read it 
+          <a href="https://www.sciencedirect.com/science/article/pii/S0306456525001068" target="_blank" rel="noopener">here!</a>.
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025-05-20</span>
+          I passed my Qualifying Exam!! I'm officially a PhD Candidate :) Thank You to my wonderful Lab for the Support and the cake!!
+          <div class="news-images">
+            <img src="7832A7D2-0BC3-421A-B624-0065EC66E99E.jpg" alt="Celebration cake" />
+            <img src="8B8261C0-BB73-4E8F-9543-CA634A234CAC.jpg" alt="Lab group" />
+          </div>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025-01-03</span>
+          I gave my first conference talk and presented one of my research projects at the Society of Integrative and Comparative Biology in Atlanta.
+          <div class="news-images">
+            <img src="07B86E41-EDC8-4EF1-975B-B97176E40C47.jpeg" alt="Conference photo" />
+          </div>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025-10-31</span>
+          I attended SACNAS NDiSTEM conference as a UT Graduate Student Ambassador and had a wonderful time. It was a great opportunity to connect with scientists across the US.
+          <div class="news-images">
+            <img src="86148784-D09F-4750-B2C3-5409F02E0AA9.jpg" alt="SACNAS conference" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Mariangel Correa Orellana &mdash; Powered by GitHub Pages
+  </footer>
+</body>
+</html>
