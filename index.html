@@ -1,349 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mariangel Correa Orellana - PhD Candidate</title>
-  <meta name="description" content="Personal research website">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --main-pink: #ff69b4;
-      --deep-pink: #d72660;
-      --deeper-pink: #c2185b;
-      --light-pink: #ffe4ec;
-      --accent-pink: #ffb6d5;
-      --text-color: #333;
-      --header-bg: #fff0f6;
-      --window-shadow: 0 4px 24px 0 rgba(255,105,180,0.16);
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mariangel Correa Orellana — PhD Candidate</title>
+<meta name="description" content="Mariangel Correa Orellana — PhD Candidate in Ecology, Evolution and Behavior, University of Texas at Austin. Microbial ecology, host-microbe interactions, anchialine ecosystems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241c26;
+    --ink-soft:#5c4f5f;
+    --paper:#fdf8f6;
+    --panel:#ffffff;
+    --rose:#c2185b;
+    --rose-deep:#8f1245;
+    --rose-light:#f6d9e6;
+    --rose-wash:#fbeef3;
+    --tide:#146b6b;
+    --tide-light:#d9efee;
+    --line:#ecdfe4;
+    --radius:14px;
+    --shadow:0 10px 30px -12px rgba(36,28,38,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{color:var(--rose-deep);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--tide);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    max-width:1180px;
+    margin:0 auto;
+    gap:0;
+  }
+  .sidebar{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:2.75rem 1.75rem 2rem;
+    display:flex;
+    flex-direction:column;
+    gap:1.75rem;
+    border-right:1px solid var(--line);
+  }
+  .avatar{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    background:linear-gradient(150deg,var(--rose-light),var(--tide-light));
+    border:2px dashed var(--rose);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.62rem;
+    text-align:center;
+    color:var(--rose-deep);
+    line-height:1.3;
+  }
+  img.avatar{
+    object-fit:cover;
+    border-style:solid;
+    border-color:var(--rose-light);
+  }
+  .sidebar h1{
+    font-size:1.5rem;
+    line-height:1.25;
+  }
+  .role{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin-top:0.35rem;
+  }
+  .sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:0.15rem;
+    margin-top:0.5rem;
+  }
+  .sidebar-nav button{
+    all:unset;
+    cursor:pointer;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:0.92rem;
+    font-family:'Inter',Arial,sans-serif;
+    font-weight:500;
+    padding:0.5rem 0.6rem;
+    border-radius:8px;
+    border-left:3px solid transparent;
+    transition:background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .sidebar-nav button:hover{
+    background:var(--rose-wash);
+    color:var(--rose-deep);
+  }
+  .sidebar-nav button[aria-current="true"]{
+    background:var(--rose-wash);
+    color:var(--rose-deep);
+    border-left-color:var(--rose);
+    font-weight:600;
+  }
+  .sidebar-links{
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+  }
+  .sidebar-links a{
+    text-decoration:none;
+    color:var(--tide);
+  }
+  .sidebar-links a:hover{ text-decoration:underline; }
+  .placeholder-note{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    color:#9a8b9d;
+  }
+
+  /* ---------- Content column ---------- */
+  .content{
+    padding:2.75rem 2.5rem 4rem;
+  }
+  .wave{
+    width:100%;
+    height:46px;
+    margin-bottom:2.5rem;
+  }
+  .tab-panel{
+    display:none;
+    margin-bottom:0;
+    animation:panelIn 0.35s ease;
+  }
+  .tab-panel.active{ display:block; }
+  @keyframes panelIn{
+    from{ opacity:0; transform:translateY(6px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .tab-panel > .eyebrow{ display:block; margin-bottom:0.5rem; }
+  .tab-panel > h2{
+    font-size:1.9rem;
+    margin-bottom:1.3rem;
+  }
+  .lede{
+    font-size:1.05rem;
+    max-width:60ch;
+  }
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:1.6rem 1.75rem;
+  }
+
+  /* Research projects */
+  .project{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.5rem 1.65rem;
+    margin-bottom:1.15rem;
+    box-shadow:var(--shadow);
+  }
+  .project h3{
+    font-size:1.15rem;
+    margin-bottom:0.55rem;
+  }
+  .project p{ margin:0 0 0.9rem; color:var(--ink-soft); }
+  .tags{ display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.9rem; }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    padding:0.22rem 0.55rem;
+    border-radius:999px;
+    background:var(--tide-light);
+    color:var(--tide);
+  }
+  .photo-row{
+    display:flex;
+    gap:0.75rem;
+    flex-wrap:wrap;
+  }
+  .photo-placeholder{
+    width:120px;
+    height:90px;
+    border-radius:10px;
+    border:1.5px dashed var(--rose);
+    background:var(--rose-wash);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.6rem;
+    color:var(--rose-deep);
+    padding:0.4rem;
+  }
+
+  /* Publications */
+  .pub{
+    display:flex;
+    gap:1rem;
+    padding:0.9rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .pub:last-child{ border-bottom:none; }
+  .pub-year{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--tide);
+    font-size:0.85rem;
+    flex:0 0 3.4rem;
+    padding-top:0.2rem;
+  }
+  .pub-title{ font-weight:600; }
+  .pub-meta{ color:var(--ink-soft); font-size:0.92rem; margin-top:0.15rem; }
+
+  /* Leadership */
+  .leadership-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.9rem; }
+  .leadership-list li{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--rose);
+    border-radius:0 var(--radius) var(--radius) 0;
+    padding:0.9rem 1.2rem;
+    box-shadow:var(--shadow);
+  }
+  .leadership-list b{ color:var(--rose-deep); }
+
+  /* News */
+  .news-item{
+    display:flex;
+    gap:1.1rem;
+    padding:1rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .news-item:last-child{ border-bottom:none; }
+  .news-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--tide);
+    flex:0 0 5.2rem;
+    padding-top:0.15rem;
+  }
+  .news-images{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.6rem; }
+  .news-images .photo-placeholder{ width:90px; height:70px; }
+
+  footer{
+    text-align:center;
+    padding:2.5rem 0;
+    color:#a596a8;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .shell{ grid-template-columns:1fr; }
+    .sidebar{
+      position:relative;
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      flex-direction:row;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:1.75rem 1.5rem;
     }
-    body {
-      margin: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--light-pink);
-      color: var(--text-color);
+    .sidebar-nav{
+      flex-direction:row;
+      overflow-x:auto;
+      width:100%;
+      gap:0.3rem;
+      order:3;
     }
-    header {
-      background: var(--header-bg);
-      padding: 2rem 1rem 1rem 1rem;
-      text-align: center;
-      border-bottom: 3px solid var(--main-pink);
-    }
-    header h1 {
-      margin: 0 0 0.25em;
-      color: var(--main-pink);
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-    }
-    header p {
-      color: var(--accent-pink);
-      font-size: 1.3rem;
-      margin: 0;
-    }
-    nav {
-      margin: 1.5rem 0 0;
-      text-align: center;
-    }
-    nav a {
-      color: var(--main-pink);
-      background: #fff;
-      padding: 0.5em 1em;
-      margin: 0 0.5em;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background 0.2s, color 0.2s;
-      border: 2px solid var(--accent-pink);
-    }
-    nav a:hover {
-      background: var(--main-pink);
-      color: #fff;
-    }
-    main {
-      max-width: 1080px;
-      margin: 2rem auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      min-height: 60vh;
-    }
-    .window-section {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: var(--window-shadow);
-      padding: 2rem 2rem 1.5rem 2rem;
-      margin-bottom: 0;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-      width: auto;
-      min-width: 0;
-      max-width: 95vw;
-      box-sizing: border-box;
-    }
-    .window-section:not(:last-child) {
-      margin-bottom: 0;
-    }
-    .window-titlebar {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.2em;
-      height: 32px;
-    }
-    .window-buttons {
-      display: flex;
-      gap: 0.5em;
-      margin-right: 0.8em;
-    }
-    .window-btn {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .window-btn.red { background: #ff5f56; border: 1px solid #e0443e;}
-    .window-btn.yellow { background: #ffbd2e; border: 1px solid #dea123;}
-    .window-btn.green { background: #27c93f; border: 1px solid #13a10e;}
-    .window-title {
-      font-size: 1.15em;
-      font-weight: bold;
-      color: var(--main-pink);
-      letter-spacing: 0.5px;
-      flex: 1;
-      white-space: nowrap;
-    }
-    h3 {
-      margin-top: 0.5em;
-      color: var(--main-pink);
-    }
-    .project {
-      margin-bottom: 1.2em;
-      padding-bottom: 0.7em;
-      border-bottom: 1px solid var(--light-pink);
-    }
-    .project:last-child {
-      border-bottom: none;
-    }
-    .highlight-title {
-      color: var(--deep-pink);
-    }
-    .highlight-desc {
-      color: var(--deeper-pink);
-    }
-    .project-images {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1em;
-      margin-top: 0.7em;
-      margin-bottom: 0.2em;
-    }
-    .project-images img {
-      width: 120px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid var(--accent-pink);
-      background: #fff;
-      box-shadow: 0 2px 8px 0 rgba(255,105,180,0.08);
-    }
-    ul {
-      padding-left: 1.5em;
-    }
-    a {
-      color: var(--main-pink);
-    }
-    .news-list {
-      margin-top: 0.5em;
-      padding-left: 0;
-      width: 100%;
-    }
-    .news-item {
-      margin-bottom: 0.8em;
-      padding: 0.6em 0.8em;
-      border-left: 4px solid var(--main-pink);
-      background: var(--light-pink);
-      border-radius: 10px;
-      font-size: 0.98em;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5em;
-    }
-    .news-date {
-      font-size: 0.93em;
-      color: var(--accent-pink);
-      margin-bottom: 0.2em;
-      display: block;
-    }
-    .news-images {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8em;
-      margin-top: 0.3em;
-    }
-    .news-images img {
-      width: 90px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid var(--accent-pink);
-      background: #fff;
-      box-shadow: 0 2px 8px 0 rgba(255,105,180,0.08);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 0 2rem;
-      color: var(--accent-pink);
-      font-size: 0.95rem;
-    }
-    @media (max-width: 1000px) {
-      main {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
-      }
-      .window-section {
-        max-width: 98vw;
-        width: auto;
-      }
-      .news-images img {
-        width: 70px;
-        height: 55px;
-      }
-    }
-  </style>
+    .sidebar-nav button{ white-space:nowrap; border-left:none; border-bottom:3px solid transparent; border-radius:8px 8px 0 0; }
+    .sidebar-nav button[aria-current="true"]{ border-left:none; border-bottom-color:var(--rose); }
+    .sidebar-links{ margin-top:0; flex-direction:row; gap:1rem; }
+    .content{ padding:2rem 1.5rem 3rem; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Mariangel Correa Orellana</h1>
-    <p>Personal Website</p>
-    <nav>
-      <a href="#about-window">About Me</a>
-      <a href="#projects-window">Research Projects</a>
-      <a href="#leadership-window">Leadership, Outreach and Mentoring</a>
-      <a href="#news-window">News</a>
+<div class="shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <!-- Headshot: CorreaOrellana_Mariangel.png must be uploaded to the same folder as index.html on GitHub -->
+      <img src="CorreaOrellana_Mariangel.png" alt="Mariangel Correa Orellana" class="avatar">
+      <h1 style="margin-top:0.9rem;">Mariangel<br>Correa Orellana</h1>
+      <p class="role">She/her/hers<br>PhD Candidate, Ecology, Evolution &amp; Behavior<br>HHMI Gilliam Fellow<br>University of Texas at Austin</p>
+    </div>
+    <nav class="sidebar-nav" aria-label="Section navigation">
+      <button type="button" data-tab="about-window" aria-current="true">About</button>
+      <button type="button" data-tab="projects-window">Research</button>
+      <button type="button" data-tab="publications-window">Publications</button>
+      <button type="button" data-tab="media-window">Media</button>
+      <button type="button" data-tab="leadership-window">Leadership &amp; Outreach</button>
+      <button type="button" data-tab="news-window">News</button>
     </nav>
-  </header>
-  <main>
-    <!-- About Me Window -->
-    <section class="window-section" id="about-window">
-      <div class="window-titlebar">
-        <div class="window-buttons">
-          <span class="window-btn red"></span>
-          <span class="window-btn yellow"></span>
-          <span class="window-btn green"></span>
-        </div>
-        <span class="window-title">About Me</span>
-      </div>
-      <div>
-        <p>
-          Hi! I'm <b>Mariangel</b>, a PhD Candidate in Ecology, Evolution and Behavior at the University of Texas at Austin. My main interests include Computational Biology, Microbial Ecology, and Host-Microbe Interactions. Feel free to explore my current projects and outreach activities!
+    <div class="sidebar-links">
+      <!-- PLACEHOLDER: swap these for your real links -->
+      <a href="https://scholar.google.com/citations?user=-yERTnoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://www.linkedin.com/in/mariangel-correa-orellana" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:mariangelmco2@utexas.edu">Email</a>
+    </div>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <!-- signature wave motif: land-to-sea connection, echoing anchialine pools -->
+    <svg class="wave" viewBox="0 0 600 46" preserveAspectRatio="none" role="presentation" aria-hidden="true">
+      <path d="M0 30 C 60 10, 120 45, 180 25 S 300 10, 360 28 S 480 42, 540 20 S 600 15 600 15"
+            fill="none" stroke="var(--rose)" stroke-width="2" opacity="0.55"/>
+      <path d="M0 36 C 60 20, 120 40, 180 30 S 300 18, 360 34 S 480 40, 540 26 S 600 24 600 24"
+            fill="none" stroke="var(--tide)" stroke-width="2" opacity="0.5"/>
+    </svg>
+
+    <!-- About -->
+    <section id="about-window" class="tab-panel active">
+      <span class="eyebrow">About</span>
+      <h2>Microbial ecology, evolution, and host&ndash;microbe interactions</h2>
+      <p class="lede">
+        I'm Mariangel, a PhD Candidate in Ecology, Evolution and Behavior at the University of Texas at Austin,
+        working in Dr. Justin Havird's lab. My research sits at the intersection of computational biology,
+        microbial ecology, and host&ndash;microbe interactions &mdash; I use fieldwork, laboratory experiments,
+        and bioinformatics to understand how microbial communities assemble in and on the animals and
+        ecosystems that host them.
+      </p>
+
+      <div class="card" style="background:var(--rose-wash); border-color:var(--rose-light); margin-top:1.5rem;">
+        <span class="eyebrow">Values</span>
+        <p class="lede" style="margin-top:0.5rem; max-width:none;">
+          I believe science should be more inclusive, and I'm an advocate for fostering an atmosphere of
+          inclusivity, fairness, and compassion for every member's background and heritage. As a Latina,
+          immigrant, and first-generation student, I moved to the United States without knowing English and
+          had to learn and adapt along the way &mdash; challenges I believe helped shape the scientist I am
+          today. My goal is to one day run an independent lab built on kindness, a genuine passion for
+          research, and continued advocacy for underrepresented students, like myself.
         </p>
       </div>
     </section>
 
-    <!-- Projects Window -->
-    <section class="window-section" id="projects-window">
-      <div class="window-titlebar">
-        <div class="window-buttons">
-          <span class="window-btn red"></span>
-          <span class="window-btn yellow"></span>
-          <span class="window-btn green"></span>
+    <!-- Research -->
+    <section id="projects-window" class="tab-panel">
+      <span class="eyebrow">Research</span>
+      <h2>Current projects</h2>
+      <p class="lede" style="margin-bottom:1.75rem;">
+        My dissertation work uses wild, non-model systems &mdash; anchialine crustaceans, freshwater turtles &mdash;
+        to ask how microbial communities assemble and interact with the animals and ecosystems that host them.
+      </p>
+
+      <div class="project">
+        <h3>Functional diversity of microbial communities in the Hawaiian anchialine ecosystem</h3>
+        <div class="tags"><span class="tag">metagenomics</span><span class="tag">MAG recovery</span><span class="tag">field work</span></div>
+        <p>
+          My first dissertation chapter investigates the functional biodiversity of microbial communities
+          in Hawaiian anchialine habitats &mdash; land-locked pools connected to the ocean through underground
+          fissures. Using fieldwork, laboratory experiments, and bioinformatic tools, I aim to uncover the
+          ecological roles and interactions of key microbial taxa in these understudied ecosystems.
+        </p>
+        <div class="photo-row">
+          <img src="IMG_0075.jpeg" alt="Anchialine pool field site" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+          <img src="IMG_0017.jpeg" alt="Sampling an anchialine pool" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
         </div>
-        <span class="window-title">Research Projects</span>
       </div>
-      <div>
-        <div class="project">
-          <h3>Characterize the functional diversity of microbial communities within the Hawaiian anchialine ecosystem</h3>
-          <p>
-            My first dissertation chapter investigates the functional biodiversity of microbial communities in Hawaiian anchialine habitats—unique land-locked pools connected to the ocean through underground fissures. Using a combination of fieldwork, laboratory experiments, and bioinformatic tools, I aim to uncover the ecological roles and interactions of key microbial taxa in these understudied ecosystems.
-          </p>
+
+      <div class="project">
+        <h3>Environment and coevolution as drivers of the gut microbiome of <i>Halocaridina rubra</i></h3>
+        <div class="tags"><span class="tag">16S rRNA</span><span class="tag">host&ndash;microbe</span><span class="tag">host health</span><span class="tag">population genetics</span></div>
+        <p>
+          I investigate how environment and coevolution shape the gut microbiome of <i>Halocaridina rubra</i>,
+          the most abundant endemic crustacean in Hawaiian anchialine pools. Using field sampling, laboratory
+          work, and bioinformatic analysis, I aim to determine how host phylogeny, diet, and geography influence
+          the structure and composition of <i>H. rubra</i>'s gut microbiome.
+        </p>
+        <div class="photo-row">
+          <video src="IMG_0855.mov" controls muted playsinline class="photo-placeholder" style="object-fit:cover; border-style:solid; padding:0;"></video>
         </div>
-        <div class="project">
-          <h3>Environment and coevolution as drivers of the gut microbiome of <i>Halocaridina rubra</i></h3>
-          <p>
-            I will investigate how environment and coevolution shape the gut microbiome of <i>Halocaridina rubra</i>, the most abundant endemic crustacean in Hawaiian anchialine pools. Using field sampling, laboratory work, and bioinformatic analysis, I aim to determine how host phylogeny, diet, and geography influence the structure and composition of H. rubra’s gut microbiome.
-          </p>
+      </div>
+
+      <div class="project">
+        <h3>UT Turtle Pond Project</h3>
+        <div class="tags"><span class="tag">16S rRNA</span><span class="tag">host&ndash;microbe</span><span class="tag">mentoring</span></div>
+        <p>
+          I studied the microbial communities of red-eared sliders (<i>Trachemys scripta elegans</i>) across
+          various locations in Austin using 16S rRNA analysis, and served as a graduate student leader,
+          mentoring undergraduate students in field sampling and microbial data analysis.
+        </p>
+        <div class="photo-row">
+          <img src="IMG_0495.jpeg" alt="UT turtle pond" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+          <img src="IMG_9854.jpeg" alt="Holding a red-eared slider during fieldwork" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
         </div>
-        <div class="project">
-          <h3>UT Turtle Pond Project</h3>
-          <p>
-            For this project, I studied the microbial communities of red-eared sliders across various locations in Austin using 16S rRNA analysis. I also served as a graduate student leader, mentoring undergraduate students in field sampling and microbial data analysis.
-          </p>
+      </div>
+
+      <div class="project">
+        <h3>Comparative microbiome of high-elevation Pacific lakes</h3>
+        <div class="tags"><span class="tag">16S rRNA</span><span class="tag">QIIME2</span><span class="tag">comparative microbiome</span></div>
+        <p>
+          I'm comparing the microbiome of Lake Waiau, a high-elevation lake on Mauna Kea, against public
+          datasets from high-altitude lakes in Chile and New Zealand, to understand how extreme elevation
+          and geography shape microbial community structure across ecosystems.
+        </p>
+        <div class="photo-row">
+          <img src="IMG_0876.jpeg" alt="Lake Waiau" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+        </div>
+      </div>
+
+      <p class="lede" style="margin-top:2rem; color:var(--ink-soft);">
+        Looking ahead, I want to keep working at the intersection of host-microbiome ecology and evolution,
+        while moving toward something more applied &mdash; I'm still figuring out exactly where that will
+        lead, but I'm hoping to carry this focus into my postdoc, pick up new techniques along the way, and
+        build the foundation to one day run my own lab.
+      </p>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications-window" class="tab-panel">
+      <span class="eyebrow">Publications</span>
+      <h2>Selected publications</h2>
+      <div class="card">
+        <div class="pub">
+          <div class="pub-year">2026</div>
+          <div>
+            <div class="pub-title">Comparative analysis of the mucosal and shell microbiota of <i>Trachemys scripta elegans</i> across multiple urban freshwater habitats</div>
+            <div class="pub-meta">
+              <i>PLOS ONE</i> &middot;
+              <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0353172" target="_blank" rel="noopener">read the paper</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- Leadership, Outreach and Mentoring Window -->
-    <section class="window-section" id="leadership-window">
-      <div class="window-titlebar">
-        <div class="window-buttons">
-          <span class="window-btn red"></span>
-          <span class="window-btn yellow"></span>
-          <span class="window-btn green"></span>
+        <div class="pub">
+          <div class="pub-year">2025</div>
+          <div>
+            <div class="pub-title">Thermal responses in the Hawaiian volcano shrimp (<i>Halocaridina rubra</i>): active vs. passive plasticity across genetic lineages</div>
+            <div class="pub-meta">
+              <i>Journal of Thermal Biology</i> &middot;
+              <a href="https://www.sciencedirect.com/science/article/pii/S0306456525001068" target="_blank" rel="noopener">read the paper</a>
+            </div>
+          </div>
         </div>
-        <span class="window-title">Leadership, Outreach and Mentoring</span>
-      </div>
-      <div>
-        <ul>
-          <li>
-           <b>Hot Science – Cool Talks! Volunteer:</b> I volunteered at the <i>“This is Your Brain on Birth Control”</i> event, where I created and led an interactive birth control matching game to engage attendees and promote science communication.
-          </li>
-          <li>
-            <b>EEBuddies Mentorship Opportunity:</b> I’m currently serving as a graduate student mentor to an undergraduate student, providing guidance on applying to graduate school and exploring research opportunities.
-           </li>
-          <li>
-            <b>SACNAS Chapter Vice President 2024-2025:</b> As Vice President of our university’s SACNAS chapter, I help lead initiatives that support underrepresented students in STEM through community building, professional development, and outreach events.
-          </li>
-        </ul>
+        <!-- PLACEHOLDER: add further entries here as papers are published, e.g.
+        <div class="pub">
+          <div class="pub-year">2026</div>
+          <div>
+            <div class="pub-title">Paper title</div>
+            <div class="pub-meta">Journal name &middot; <a href="#">link</a></div>
+          </div>
+        </div>
+        -->
       </div>
     </section>
 
-    <!-- News Window -->
-    <section class="window-section" id="news-window">
-      <div class="window-titlebar">
-        <div class="window-buttons">
-          <span class="window-btn red"></span>
-          <span class="window-btn yellow"></span>
-          <span class="window-btn green"></span>
-        </div>
-        <span class="window-title">News</span>
-      </div>
-      <div class="news-list">
-        <div class="news-item">
-          <span class="news-date">2025-05-28</span>
-          My first first-author publication was accepted in <i>Journal of Thermal Biology</i>! You can read it 
-          <a href="https://www.sciencedirect.com/science/article/pii/S0306456525001068" target="_blank" rel="noopener">here!</a>.
-        </div>
-        <div class="news-item">
-          <span class="news-date">2025-05-20</span>
-          I passed my Qualifying Exam!! I'm officially a PhD Candidate :) Thank You to my wonderful Lab for the Support and the cake!!
-          <div class="news-images">
-            <img src="7832A7D2-0BC3-421A-B624-0065EC66E99E.jpg" alt="Celebration cake" />
-            <img src="8B8261C0-BB73-4E8F-9543-CA634A234CAC.jpg" alt="Lab group" />
+    <!-- Media Highlights -->
+    <section id="media-window" class="tab-panel">
+      <span class="eyebrow">Media</span>
+      <h2>Media highlights</h2>
+      <div class="card">
+        <div class="pub">
+          <div>
+            <div class="pub-title">&ldquo;Microbiology and Mentoring: Meet Grad Student Mariangel Correa Orellana&rdquo;</div>
+            <div class="pub-meta">
+              College of Natural Sciences, UT Austin &middot;
+              <a href="https://cns.utexas.edu/news/features/microbiology-and-mentoring-meet-grad-student-mariangel-correa-orellana" target="_blank" rel="noopener">read the feature</a>
+            </div>
           </div>
         </div>
-        <div class="news-item">
-          <span class="news-date">2025-01-03</span>
-          I gave my first conference talk and presented one of my research projects at the Society of Integrative and Comparative Biology in Atlanta.
-          <div class="news-images">
-            <img src="07B86E41-EDC8-4EF1-975B-B97176E40C47.jpeg" alt="Conference photo" />
+        <div class="pub">
+          <div>
+            <div class="pub-title">&ldquo;Take a Peek into What the Turtles Have Been Up To While They're Away from the Turtle Pond&rdquo;</div>
+            <div class="pub-meta">
+              College of Natural Sciences, UT Austin &middot;
+              <a href="https://cns.utexas.edu/news/features/take-peek-what-turtles-have-been-while-theyre-away-turtle-pond" target="_blank" rel="noopener">read the feature</a>
+            </div>
           </div>
         </div>
-        <div class="news-item">
-          <span class="news-date">2025-10-31</span>
-          I attended SACNAS NDiSTEM conference as a UT Graduate Student Ambassador and had a wonderful time. It was a great opportunity to connect with scientists across the US.
-          <div class="news-images">
-            <img src="86148784-D09F-4750-B2C3-5409F02E0AA9.jpg" alt="SACNAS conference" />
+        <div class="pub">
+          <div>
+            <div class="pub-title">&ldquo;Student Researchers Continue Study on Turtle Pond, Educating Fellow Longhorns&rdquo;</div>
+            <div class="pub-meta">
+              The Daily Texan &middot;
+              <a href="https://thedailytexan.com/2024/10/08/student-researchers-continue-study-on-turtle-pond-educating-fellow-longhorns/" target="_blank" rel="noopener">read the article</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Leadership -->
+    <section id="leadership-window" class="tab-panel">
+      <span class="eyebrow">Leadership &amp; Outreach</span>
+      <h2>Leadership, outreach and mentoring</h2>
+      <ul class="leadership-list">
+        <li><b>Judge, CNS Tech &amp; Science Undergraduate Research Forum:</b> Served as a judge at the College of Natural Sciences Tech &amp; Science Undergraduate Research Forum at UT Austin (April 15, 2026).</li>
+        <li>
+          <b>UT STEM Girl Day Volunteer (February 28, 2026):</b> Volunteered with my SACNAS chapter at UT STEM Girl Day, our biggest outreach event, running activities like &ldquo;draw yourself as a scientist&rdquo; and dressing up as a scientist to get girls excited about science.
+          <div class="photo-row" style="margin-top:0.8rem;">
+            <img src="IMG_1556.jpeg" alt="Engaging students at UT STEM Girl Day" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            <img src="IMG_1555.jpeg" alt="Drawing yourself as a scientist activity at UT STEM Girl Day" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+          </div>
+        </li>
+        <li><b>Cient&iacute;fico Latino Graduate Student Mentorship Initiative (GSMI), Mentor, Fall 2025&ndash;Spring 2026:</b> Mentored Malia Miguel, now a PhD student in Microbiology at UC Riverside.</li>
+        <li><b>SACNAS Chapter President, 2025&ndash;2026</b> &mdash; Society for the Advancement of Chicanos/Hispanics and Native Americans in Science, The University of Texas at Austin Chapter. Led the chapter and executive board, presided over meetings, set chapter goals, coordinated events, managed finances with the Treasurer, and maintained communication with national SACNAS and university offices.</li>
+        <li><b>Ecolunch Seminar Series Coordinator, Spring 2025:</b> Recruited and coordinated seminar speakers for the Ecolunch series, managing scheduling, communications, and logistics to ensure successful weekly seminars.</li>
+        <li>
+          <b>Food Donation Drive, Fall 2025:</b> Led a food donation drive with my SACNAS chapter to support the UT Outpost food pantry and our campus community.
+          <div class="photo-row" style="margin-top:0.8rem;">
+            <img src="IMG_1338.png" alt="Food donation bin collected for UT Outpost" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+          </div>
+        </li>
+        <li><b>Research Presentation (September 26, 2025):</b> Presented my research and &ldquo;a day in the life of a scientist&rdquo; to students at West Hawaii Exploration Academy over Zoom.</li>
+        <li><b>Speaker, &ldquo;Unpacking the Turtle Microbiome: A Hands-On Example of What Undergraduate Research Really Looks Like&rdquo; (November 2025):</b> Invited talk for the ASM Undergraduate Chapter, UT Austin.</li>
+        <li><b>Speaker, &ldquo;Connecting the Dots&rdquo; Graduate Student Panel (October 2025):</b> Presented on research opportunities and pathways for undergraduates at UT Austin.</li>
+        <li><b>SACNAS Chapter Vice President, 2024&ndash;2025:</b> Helped lead initiatives that support underrepresented students in STEM through community building, professional development, and outreach events.</li>
+        <li><b>EEBuddies Mentorship, 2025:</b> Served as a graduate student mentor to an undergraduate student, providing guidance on applying to graduate school and exploring research opportunities.</li>
+        <li>
+          <b>Hot Science &ndash; Cool Talks! Volunteer, Fall 2024&ndash;present:</b> I volunteer at Hot Science &ndash; Cool Talks every academic year with my SACNAS chapter, where we run activities before each talk to engage attendees and help them learn about the topic &mdash; including an interactive birth control matching game for the &ldquo;This is Your Brain on Birth Control&rdquo; event.
+          <div class="photo-row" style="margin-top:0.8rem;">
+            <img src="IMG_1522.jpeg" alt="SACNAS table at Hot Science Cool Talks" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            <img src="IMG_0544.jpeg" alt="SACNAS activity table, This is Your Brain on Birth Control event" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- News -->
+    <section id="news-window" class="tab-panel">
+      <span class="eyebrow">News</span>
+      <h2>Latest updates</h2>
+      <div class="card">
+        <div class="news-item">
+          <div class="news-date">2026-07-19</div>
+          <div>
+            I attended &ldquo;Optical Imaging Across Biological Length Scales: From Nanometers to Millimeters&rdquo; (July 19&ndash;31), a course led by the Advanced Imaging Center at Janelia Research Campus. I learned about different imaging techniques and the range of equipment they have, networked with other scientists, and got to explore the beautiful research campus.
+            <div class="news-images">
+              <img src="IMG_2100.jpeg" alt="Imaging equipment at the Advanced Imaging Center, Janelia" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="IMG_2079.jpeg" alt="Janelia Research Campus grounds" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="IMG_2127.jpeg" alt="Nobel Prize medal on display at Janelia" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2026-07-10</div>
+          <div>
+            My first-author paper from the UT Turtle Pond Project is officially published in <i>PLOS ONE</i>: &ldquo;Comparative analysis of the mucosal and shell microbiota of <i>Trachemys scripta elegans</i> across multiple urban freshwater habitats.&rdquo;
+            <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0353172" target="_blank" rel="noopener">Read it here.</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2026-05-12</div>
+          <div>
+            I had the opportunity to attend the HHMI Science Investigator Meeting (May 12&ndash;14, 2026), where I networked with and learned from top scientists in the field, reconnected with other Gilliam fellows, and presented a research poster.
+            <div class="news-images">
+              <img src="IMG_1833.jpeg" alt="Presenting a research poster at the HHMI Science Investigator Meeting" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="3c4c0e4e-9e42-4202-82f2-49d0c329a25f.jpeg" alt="With fellow Gilliam Fellows at the HHMI Science Investigator Meeting" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025-09-15</div>
+          <div>
+            I had the opportunity to attend the HHMI Gilliam Annual Meeting, where I connected with other fellows and had an amazing time &mdash; I felt welcomed and accepted, and received a HHMI Gilliam Fellowship certificate. I was the first person at UT Austin to receive an HHMI Gilliam Fellowship!
+            <div class="news-images">
+              <img src="IMG_1049.jpeg" alt="At the HHMI Gilliam Annual Meeting" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="f8e2a3c1-b009-4ef1-a97e-940cf7593c91.jpeg" alt="With the 2025 Gilliam Fellows cohort" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="IMG_1193.jpeg" alt="Receiving the Gilliam Fellowship certificate with advisor Justin Havird" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025-07-11</div>
+          <div>
+            I'm so happy to announce that I was awarded the HHMI Gilliam Fellowship (given to roughly 0.3% of applicants), a program committed to supporting equity and inclusion in science, which will support me for the rest of my PhD! I've also had the amazing opportunity to connect with and become part of an incredible cohort of scientists. Thanks to my advisor, Justin, for supporting me through the application process.
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025-05-28</div>
+          <div>
+            My first first-author publication, &ldquo;Thermal responses in the Hawaiian volcano shrimp (<i>Halocaridina rubra</i>): active vs. passive plasticity across genetic lineages,&rdquo; was accepted in <i>Journal of Thermal Biology</i>!
+            <a href="https://www.sciencedirect.com/science/article/pii/S0306456525001068" target="_blank" rel="noopener">Read it here.</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025-05-20</div>
+          <div>
+            I passed my Qualifying Exam! I'm officially a PhD Candidate :) Thank you to my wonderful lab for the support and the cake!
+            <div class="news-images">
+              <img src="IMG_8884.jpeg" alt="PhD Candidate celebration cake" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+              <img src="IMG_8892.jpeg" alt="Celebrating with the Havird lab" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025-01-03</div>
+          <div>
+            I gave my first conference talk and presented one of my research projects at the Society for Integrative and Comparative Biology meeting in Atlanta.
+            <div class="news-images">
+              <img src="IMG_9703.jpeg" alt="At the SICB 2025 conference in Atlanta" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2024-10-31</div>
+          <div>
+            I attended the SACNAS NDiSTEM conference as a UT Graduate Student Ambassador and had a wonderful time connecting with scientists across the US.
+            <div class="news-images">
+              <img src="IMG_9508.jpeg" alt="At the UT Austin booth, SACNAS NDiSTEM conference" class="photo-placeholder" style="object-fit:cover; border-style:solid;">
+            </div>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: add new entries above this line, most recent first -->
+      </div>
+    </section>
+
   </main>
-  <footer>
-    &copy; 2025 Mariangel Correa Orellana &mdash; Powered by GitHub Pages
-  </footer>
+</div>
+
+<footer>&copy; 2025 Mariangel Correa Orellana &mdash; Powered by GitHub Pages</footer>
+
+<script>
+  (function(){
+    var buttons = document.querySelectorAll('.sidebar-nav button[data-tab]');
+    var panels = document.querySelectorAll('.tab-panel');
+
+    function showTab(id, updateHash){
+      panels.forEach(function(p){ p.classList.toggle('active', p.id === id); });
+      buttons.forEach(function(b){
+        var isActive = b.getAttribute('data-tab') === id;
+        b.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+      if (updateHash && history.replaceState) {
+        history.replaceState(null, '', '#' + id);
+      }
+      var content = document.querySelector('.content');
+      if (content) { content.scrollTop = 0; }
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        showTab(btn.getAttribute('data-tab'), true);
+      });
+    });
+
+    var initial = window.location.hash ? window.location.hash.slice(1) : null;
+    if (initial && document.getElementById(initial)) {
+      showTab(initial, false);
+    }
+  })();
+</script>
 </body>
 </html>
