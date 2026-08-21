@@ -280,7 +280,7 @@
     padding-top:0.15rem;
   }
   .news-images{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.6rem; }
-  .news-images .photo-placeholder{ width:90px; height:70px; }
+  .news-images .photo-placeholder{ width:160px; height:120px; }
 
   footer{
     text-align:center;
@@ -323,8 +323,8 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <div>
-      <!-- Headshot: CorreaOrellana_Mariangel.jpg must be uploaded to the same folder as index.html on GitHub -->
-      <img src="CorreaOrellana_Mariangel.jpg" alt="Mariangel Correa Orellana" class="avatar">
+      <!-- Headshot: CorreaOrellana_Mariangel_1.jpg must be uploaded to the same folder as index.html on GitHub -->
+      <img src="CorreaOrellana_Mariangel_1.jpg" alt="Mariangel Correa Orellana" class="avatar">
       <h1 style="margin-top:0.9rem;">Mariangel<br>Correa Orellana</h1>
       <p class="role">She/her/hers<br>PhD Candidate, Ecology, Evolution &amp; Behavior<br>HHMI Gilliam Fellow<br>University of Texas at Austin</p>
     </div>
@@ -358,14 +358,19 @@
     <!-- About -->
     <section id="about-window" class="tab-panel active">
       <span class="eyebrow">About</span>
-      <h2>Microbial ecology, evolution, and host&ndash;microbe interactions</h2>
-      <p class="lede">
-        I'm Mariangel, a PhD Candidate in Ecology, Evolution and Behavior at the University of Texas at Austin,
-        working in Dr. Justin Havird's lab. My research sits at the intersection of computational biology,
-        microbial ecology, and host&ndash;microbe interactions &mdash; I use fieldwork, laboratory experiments,
-        and bioinformatics to understand how microbial communities assemble in and on the animals and
-        ecosystems that host them.
-      </p>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:flex-start;">
+        <img src="CorreaOrellana_Mariangel_1.jpg" alt="Mariangel Correa Orellana" style="width:220px; height:220px; border-radius:16px; object-fit:cover; border:2px solid var(--rose-light); box-shadow:var(--shadow); flex-shrink:0;">
+        <div style="flex:1; min-width:260px;">
+          <h2>Microbial ecology, evolution, and host&ndash;microbe interactions</h2>
+          <p class="lede">
+            I'm Mariangel, a PhD Candidate in Ecology, Evolution and Behavior at the University of Texas at Austin,
+            working in Dr. Justin Havird's lab. My research sits at the intersection of computational biology,
+            microbial ecology, and host&ndash;microbe interactions &mdash; I use fieldwork, laboratory experiments,
+            and bioinformatics to understand how microbial communities assemble in and on the animals and
+            ecosystems that host them.
+          </p>
+        </div>
+      </div>
 
       <div class="card" style="background:var(--rose-wash); border-color:var(--rose-light); margin-top:1.5rem;">
         <span class="eyebrow">Values</span>
@@ -383,11 +388,16 @@
     <!-- Research -->
     <section id="projects-window" class="tab-panel">
       <span class="eyebrow">Research</span>
-      <h2>Current projects</h2>
-      <p class="lede" style="margin-bottom:1.75rem;">
-        My dissertation work uses wild, non-model systems &mdash; anchialine crustaceans, freshwater turtles &mdash;
-        to ask how microbial communities assemble and interact with the animals and ecosystems that host them.
-      </p>
+      <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:flex-start;">
+        <img src="CorreaOrellana_Mariangel_1.jpg" alt="Mariangel Correa Orellana" style="width:220px; height:220px; border-radius:16px; object-fit:cover; border:2px solid var(--rose-light); box-shadow:var(--shadow); flex-shrink:0;">
+        <div style="flex:1; min-width:260px;">
+          <h2>Current projects</h2>
+          <p class="lede" style="margin-bottom:1.75rem;">
+            My dissertation work uses wild, non-model systems &mdash; anchialine crustaceans, freshwater turtles &mdash;
+            to ask how microbial communities assemble and interact with the animals and ecosystems that host them.
+          </p>
+        </div>
+      </div>
 
       <div class="project">
         <h3>Functional diversity of microbial communities in the Hawaiian anchialine ecosystem</h3>
